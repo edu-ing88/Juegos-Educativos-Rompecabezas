@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROMPECABEZAS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<section id="inicio" class="pantalla activa">
+  <div class="tarjeta">
+    <h1>🧩 ROMPECABEZAS</h1>
+    <p class="sub">Observa, concentra tu mirada y arma la imagen</p>
+    <div class="fila-btn">
+      <button class="btn verde grande" id="btnIniciar">Iniciar</button>
+      <button class="btn azul grande" id="btnConfig">Configurar actividad</button>
+    </div>
+    <p class="sub" id="estado">Primero configura la actividad para poder iniciar.</p>
+  </div>
+</section>
+
+<div id="cuenta" aria-live="assertive"></div>
+
+<section id="docente" class="pantalla">
+  <div class="tarjeta">
+    <h1>🧩 ROMPECABEZAS</h1>
+    <p class="sub">Panel del docente: prepara la actividad</p>
+    <div class="cfg">
+      <div class="bloque">
+        <h2>1. Imagen</h2>
+        <input type="file" id="archivo" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" hidden>
+        <button class="btn azul" id="btnSubir">SUBIR IMAGEN</button>
+        <div class="vista" id="vista"><span>Aún no hay imagen</span></div>
+        <p class="error" id="errImg"></p>
+      </div>
+      <div class="bloque">
+        <h2>2. Dificultad</h2>
+        <div class="niveles" id="niveles">
+          <label><input type="radio" name="nivel" value="2"><span>Fácil<small>4 piezas · 2 × 2</small></span></label>
+          <label><input type="radio" name="nivel" value="3"><span>Normal<small>9 piezas · 3 × 3</small></span></label>
+          <label><input type="radio" name="nivel" value="4"><span>Difícil<small>16 piezas · 4 × 4</small></span></label>
+          <label><input type="radio" name="nivel" value="5"><span>Experto<small>25 piezas · 5 × 5</small></span></label>
+        </div>
+        <p class="error" id="errNivel"></p>
+      </div>
+    </div>
+    <div class="fila-btn">
+      <button class="btn verde grande" id="btnGuardar">GUARDAR</button>
+      <button class="btn gris grande" id="btnVolver">VOLVER</button>
+    </div>
+  </div>
+</section>
+
+<section id="juego" class="pantalla">
+  <header class="barra">
+    <h1>🧩 ROMPECABEZAS</h1>
+    <div class="acciones">
+      <button class="btn naranja" id="btnReiniciar">REINICIAR</button>
+      <button class="btn rojo" id="btnSalir">SALIR</button>
+    </div>
+  </header>
+  <div class="progreso">
+    <div class="datos">
+      <span>Total: <b id="pTotal">0</b></span>
+      <span>Colocadas: <b id="pOk">0</b></span>
+      <span>Pendientes: <b id="pPend">0</b></span>
+      <span>Avance: <b id="pPct">0 %</b></span>
+    </div>
+    <div class="barraP"><div id="barra"></div></div>
+    <div id="textoP">Piezas colocadas: 0 de 0.</div>
+  </div>
+  <div id="mensaje" aria-live="polite"></div>
+  <main class="cols">
+    <div class="col">
+      <h2>IMAGEN DEL ROMPECABEZAS</h2>
+      <div class="area"><div id="tablero"><img id="bn" alt="Plantilla en blanco y negro"></div></div>
+    </div>
+    <div class="col">
+      <h2>PIEZAS DISPONIBLES</h2>
+      <div class="area"><div id="bandeja"></div></div>
+    </div>
+  </main>
+</section>
+
+<div class="modal" id="modal"><div class="caja" id="caja"></div></div>
+<script src="script.js"></script>
+</body>
+</html>
